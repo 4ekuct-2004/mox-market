@@ -1,6 +1,7 @@
 package ru.mox.mox_market.entity.tradeEnt;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +19,11 @@ public class Lot extends BaseEntity {
     @OneToOne
     private Item item;
 
+    @OneToMany
     private List<SellRequest> sellRequests;
+    @OneToMany
     private List<BuyRequest> buyRequests;
-
+    @OneToMany
     private List<Transaction> transactionHistory;
 
     private boolean blocked;

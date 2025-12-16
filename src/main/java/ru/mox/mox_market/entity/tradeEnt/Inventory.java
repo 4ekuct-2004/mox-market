@@ -1,6 +1,8 @@
 package ru.mox.mox_market.entity.tradeEnt;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,10 @@ public class Inventory extends BaseEntity {
     private BigDecimal balance;
     private BigDecimal withholdenBalance;
 
+    @OneToMany
     private List<ItemInstance> items;
 
+    @OneToMany
     private List<Transaction> transactionHistory;
 
     private boolean visibleForEveryone;
