@@ -15,7 +15,6 @@ release.properties
 dependency-reduced-pom.xml
 .buildNumber
 .mvn/timing.properties
-.mvn/wrapper/maven-wrapper.jar
 
 ### Spring Boot ###
 logs/
