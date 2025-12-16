@@ -10,6 +10,7 @@ import ru.mox.mox_market.entity.BaseEntity;
 import ru.mox.mox_market.entity.tradeEnt.Inventory;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -52,23 +53,19 @@ public class MoxUser extends BaseEntity implements UserDetails {
         return !isDeleted();
     }
 
-    public static MoxUser create(
-            String publicName,
-            String avatarUrl,
-            String status,
-            String aboutMe,
-            String username,
-            String password,
-            Set<String> roles
-    ){
+    public static MoxUser create(String username, String password) {
         MoxUser moxUser = new MoxUser();
-        moxUser.setPublicName(publicName);
-        moxUser.setAvatarUrl(avatarUrl);
-        moxUser.setStatus(status);
-        moxUser.setAboutMe(aboutMe);
+        moxUser.setPublicName(username);
+        moxUser.setAvatarUrl("static/images/avatars/default/1.png");
+        moxUser.setStatus("");
+        moxUser.setAboutMe("");
         moxUser.setUsername(username);
         moxUser.setPassword(password);
+
+        Set<String> roles = new HashSet<>();
+        roles.add("USER");
         moxUser.setRoles(roles);
+
         return moxUser;
     }
 }
