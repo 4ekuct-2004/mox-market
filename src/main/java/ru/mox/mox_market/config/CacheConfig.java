@@ -15,7 +15,7 @@ public class CacheConfig {
     public CacheManager cacheManager() {
         CaffeineCacheManager manager = new CaffeineCacheManager();
 
-        manager.registerCustomCache("topLotsCards", Caffeine.newBuilder()
+        manager.registerCustomCache("lotCards", Caffeine.newBuilder()
                 .expireAfterWrite(15, TimeUnit.MINUTES)
                 .maximumSize(1000)
                 .build()
@@ -25,7 +25,7 @@ public class CacheConfig {
                 .maximumSize(1000)
                 .build()
         );
-        manager.registerCustomCache("lot_full", Caffeine.newBuilder()
+        manager.registerCustomCache("lots", Caffeine.newBuilder()
                 .expireAfterWrite(10, TimeUnit.SECONDS)
                 .maximumSize(1000)
                 .build()
