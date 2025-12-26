@@ -3,6 +3,7 @@ package ru.mox.mox_market.dto;
 import lombok.Builder;
 import lombok.extern.jackson.Jacksonized;
 import ru.mox.mox_market.entity.tradeEnt.Item;
+import ru.mox.mox_market.entity.tradeEnt.ItemInstance;
 
 @Builder
 @Jacksonized
@@ -17,5 +18,8 @@ public record ItemDTO(
                 .description(item.getDescription())
                 .imageUrl(item.getImageUrl())
                 .build();
+    }
+    public static ItemDTO of(ItemInstance item) {
+        return of(item.getItem());
     }
 }
