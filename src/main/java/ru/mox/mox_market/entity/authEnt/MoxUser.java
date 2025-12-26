@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.mox.mox_market.entity.BaseEntity;
 import ru.mox.mox_market.entity.tradeEnt.Inventory;
+import ru.mox.mox_market.entity.tradeEnt.Lot;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -24,6 +25,8 @@ public class MoxUser extends BaseEntity implements UserDetails {
 
     @OneToOne(fetch = FetchType.EAGER)
     private Inventory inventory;
+
+    private Set<Lot> favorites;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -65,6 +68,7 @@ public class MoxUser extends BaseEntity implements UserDetails {
         Set<String> roles = new HashSet<>();
         roles.add("USER");
         moxUser.setRoles(roles);
+        moxUser.setFavorites(new HashSet<>());
 
         return moxUser;
     }
