@@ -10,13 +10,11 @@ import java.time.LocalDateTime;
 @Builder
 @Jacksonized
 public record SellRequestOutDTO(
-        Long targetId,
         LocalDateTime timestamp,
         BigDecimal price
 ) {
     public static SellRequestOutDTO of(SellRequest tradeRequest) {
         return SellRequestOutDTO.builder()
-                .targetId(tradeRequest.getTarget().getId())
                 .timestamp(tradeRequest.getCreatedAt())
                 .price(tradeRequest.getPrice())
                 .build();
