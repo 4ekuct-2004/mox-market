@@ -12,4 +12,6 @@ public interface BuyRequestRepo extends JpaRepository<BuyRequest, Integer> {
     Optional<BuyRequest> findTopByTargetIdOrderByPriceDesc(Long targetId);
 
     List<BuyRequest> findByTargetIdOrderByPriceDesc(Long targetId);
+
+    Integer countByTargetId(Long targetId);
 }

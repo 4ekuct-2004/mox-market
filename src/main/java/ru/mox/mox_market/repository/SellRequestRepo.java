@@ -13,4 +13,6 @@ public interface SellRequestRepo extends JpaRepository<SellRequest, Integer> {
     Optional<SellRequest> findTopByTargetIdOrderByPriceAsc(Long targetId);
 
     List<SellRequest> findByTargetId(Long targetId, Pageable pageable);
+
+    Integer countByTargetId(Long targetId);
 }
