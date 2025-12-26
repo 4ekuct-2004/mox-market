@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import ru.mox.mox_market.dto.dto_out.lot.LotCardDTO;
-import ru.mox.mox_market.dto.dto_out.lot.LotDTOStatic;
 import ru.mox.mox_market.entity.tradeEnt.Lot;
 
 import java.time.LocalDateTime;
