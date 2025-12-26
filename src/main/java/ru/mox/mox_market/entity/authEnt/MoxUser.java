@@ -59,7 +59,7 @@ public class MoxUser extends BaseEntity implements UserDetails {
     public static MoxUser create(String username, String password) {
         MoxUser moxUser = new MoxUser();
         moxUser.setPublicName(username);
-        moxUser.setAvatarUrl("static/images/avatars/default/1.png");
+        moxUser.setAvatarUrl("static/images/avatars/default.jpg");
         moxUser.setStatus("");
         moxUser.setAboutMe("");
         moxUser.setUsername(username);
