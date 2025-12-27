@@ -15,12 +15,10 @@ public class TransactionService {
     private final TransactionRepo transactionRepo;
 
     private final InventoryService inventoryService;
-    private final LotService lotService;
 
-    public TransactionService(TransactionRepo transactionRepo, InventoryService inventoryService, LotService lotService) {
+    public TransactionService(TransactionRepo transactionRepo, InventoryService inventoryService) {
         this.transactionRepo = transactionRepo;
         this.inventoryService = inventoryService;
-        this.lotService = lotService;
     }
 
     public void applyTransaction(Transaction transaction) {
