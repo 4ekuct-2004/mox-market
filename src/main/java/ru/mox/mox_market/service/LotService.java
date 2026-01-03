@@ -62,11 +62,11 @@ public class LotService {
 
     @Cacheable( cacheNames = "lotsStatic", key="#lot.id")
     public LotDTOStatic getLotDTOStatic(Lot lot) {
-        return LotDTOStatic.of(lot, getLotRecentTransactionsCount(lot));
+        return LotDTOStatic.of(lot);
     }
     @Cacheable( cacheNames = "lotsDynamic", key="#lot.id" )
     public LotDTODynamic getLotDTODynamic(Lot lot) {
-        return LotDTODynamic.of(lot, getLotRecentTransactionsCount(lot));
+        return LotDTODynamic.of(lot);
     }
 
     public Integer getLotRecentTransactionsCount(Lot lot) {

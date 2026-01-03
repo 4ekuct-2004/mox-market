@@ -36,9 +36,6 @@ public class UserService implements UserDetailsService {
     public MoxUser getUserById(Long id) {
         return userRepo.findById(id).orElse(null);
     }
-    public MoxUser getUserByUsername(String username) {
-        return userRepo.findByUsername(username).orElse(null);
-    }
 
     public MoxUser createAndSaveUser(String username, String password) {
         MoxUser user = MoxUser.create(username, passwordEncoder.encode(password));
@@ -49,14 +46,10 @@ public class UserService implements UserDetailsService {
         return user;
     }
     public void addRoleToUser(MoxUser user, String role) {
-        Set<String> roles = user.getRoles();
-        roles.add(role);
-        user.setRoles(roles);
+        user.getRoles().add(role);
     }
     public void removeRoleFromUser(MoxUser user, String role) {
-        Set<String> roles = user.getRoles();
-        roles.remove(role);
-        user.setRoles(roles);
+        user.getRoles().remove(role);
     }
 
     public boolean isCredentialsValid(String username, String password) {
@@ -74,7 +67,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public MoxUser loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepo.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("UserService.loadByUsername | User [" + username + "] not found"));
     }
 }

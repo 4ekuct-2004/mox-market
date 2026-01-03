@@ -28,13 +28,8 @@ public class InventoryService {
     public void moveItem(Inventory in, Inventory out, ItemInstance item) {
         if(!out.getItems().contains(item)) throw new IllegalArgumentException("InventoryService.moveItem | Out inv dont have needed item");
 
-        List<ItemInstance> outItems = out.getItems();
-        outItems.remove(item);
-        out.setItems(outItems);
-
-        List<ItemInstance> inItems = in.getItems();
-        inItems.add(item);
-        in.setItems(inItems);
+        out.getItems().remove(item);
+        in.getItems().add(item);
     }
 
     public Inventory getUserInventory(MoxUser user) {

@@ -30,9 +30,7 @@ public class TransactionService {
         inventoryService.increaseUserBalance(transaction.getSellerRequest().getAuthor(), transaction.getPrice());
         inventoryService.moveItem(in, out, transaction.getItemInstance());
 
-        List<Transaction> history = lot.getTransactionHistory();
-        history.add(transaction);
-        lot.setTransactionHistory(history);
+        lot.getTransactionHistory().add(transaction);
 
         transaction.getBuyerRequest().setStatus(TradeRequestStatus.CONDUCTED);
         transaction.getSellerRequest().setStatus(TradeRequestStatus.CONDUCTED);

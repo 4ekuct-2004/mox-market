@@ -38,9 +38,8 @@ public class TradeRequestService {
         sellRequest.setPrice(sellRequest.getPrice().multiply(COMMISSION_MODIFIER).setScale(2, RoundingMode.HALF_UP));
         sellRequest.getItem().setOnSell(true);
 
-        List<SellRequest> tls = lot.getSellRequests();
-        tls.add(sellRequest);
-        lot.setSellRequests(tls);
+        lot.getSellRequests().add(sellRequest);
+
         sellRequestRepo.save(sellRequest);
 
         lotService.checkRequestsIntersections(lot);
@@ -51,9 +50,8 @@ public class TradeRequestService {
 
         sellRequest.getItem().setOnSell(false);
 
-        List<SellRequest> tls = lot.getSellRequests();
-        tls.remove(sellRequest);
-        lot.setSellRequests(tls);
+        lot.getSellRequests().remove(sellRequest);
+
         sellRequestRepo.delete(sellRequest);
     }
 
@@ -63,9 +61,7 @@ public class TradeRequestService {
 
         inventoryService.holdUserMoney(buyRequest.getAuthor(), buyRequest.getPrice());
 
-        List<BuyRequest> trb = lot.getBuyRequests();
-        trb.add(buyRequest);
-        lot.setBuyRequests(trb);
+        lot.getBuyRequests().add(buyRequest);
         buyRequestRepo.save(buyRequest);
 
         lotService.checkRequestsIntersections(lot);
@@ -76,9 +72,8 @@ public class TradeRequestService {
 
         inventoryService.unholdUserMoney(buyRequest.getAuthor(), buyRequest.getPrice());
 
-        List<BuyRequest> trb = lot.getBuyRequests();
-        trb.remove(buyRequest);
-        lot.setBuyRequests(trb);
+        lot.getBuyRequests().remove(buyRequest);
+
         buyRequestRepo.delete(buyRequest);
     }
 
