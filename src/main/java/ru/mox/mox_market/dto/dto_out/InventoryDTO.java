@@ -13,6 +13,7 @@ import java.util.List;
 @Jacksonized
 public record InventoryDTO(
         BigDecimal balance,
+        BigDecimal witholdenBalance,
         List<ItemDTO> items,
         List<TransactionDTO> transactionHistory,
         boolean visibleForEveryone
