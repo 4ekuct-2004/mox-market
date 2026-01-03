@@ -9,14 +9,12 @@ import ru.mox.mox_market.entity.tradeEnt.Lot;
 @Jacksonized
 public record LotDTOStatic(
         Long id,
-        ItemDTO item,
-        boolean blocked
+        ItemDTO item
 ) {
-    public static LotDTOStatic of(Lot lot, Integer recentTransactionsCount) {
+    public static LotDTOStatic of(Lot lot) {
         return LotDTOStatic.builder()
                 .id(lot.getId())
                 .item(ItemDTO.of(lot.getItem()))
-                .blocked(lot.isBlocked())
                 .build();
     }
 }
